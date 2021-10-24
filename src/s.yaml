@@ -2,14 +2,14 @@ edition: 1.0.0 #  命令行YAML规范版本，遵循语义化版本（Semantic V
 name: modern-web-application #  项目名称
 access: #访问秘钥别名
 vars: # [全局变量，提供给各个服务使用]
-  domain: 
+  domain: ''
   region: cn-hongkong
   indexFile: index.html
   fc: 
-    baseUrl:  #函数计算触发器地址，可以在部署好函数之后获得。例子： https://xxx.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/serverlesshub/serverlesshub/
+    baseUrl:  '' #函数计算触发器地址，可以在部署好函数之后获得。例子： https://xxx.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/serverlesshub/serverlesshub/
   oss:
-    baseUrl: #oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
-    bucketName: hanxie-serverless-hub
+    baseUrl: '' #oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
+    bucketName: '' # 例子： hanxie-serverless-hub
 services:
   www: # 静态资源
     component: devsapp/website
