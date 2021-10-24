@@ -1,0 +1,192 @@
+.component-container {
+    display: flex;
+    height: 100%;
+    .component-list {
+        border-right: 1px solid #eee;
+        flex: 0 0 320px;
+        padding-right: 10px;
+        .component-list-container {
+            .component-title {
+                height: 42px;
+                font-size: 24px;
+                font-weight: bold;
+                color: #000;
+                margin-bottom: 4px;
+        
+            }
+            .search {
+                height: 42px;
+            }
+        }
+
+    }
+    .component-detail-content {
+        position: relative;
+        flex: 1 1 auto;
+        .component-detail-container {
+            height: 100%;
+        }
+        .next-tabs {
+            height: 100%;
+            .next-tabs-content {
+                height: 100%;
+                .next-tabs-tabpane {
+                    height: 100%;
+                }
+            }
+        }
+        .next-tabs-tab {
+            
+            border-radius: 0 !important;
+        }
+        .component-info {
+            .component-basic-info {
+                display: flex;
+                height: 160px;
+                padding-top: 10px;
+                margin-bottom: 20px;
+                .component-img {
+                    width: 164px;
+                    height: 164px;
+                    padding: 6px;
+                    .avartor-img {
+                        width: 140px;
+                        height: 140px;
+                        border-radius: 50%;
+                        background-color: #eee;
+                        margin: 0 auto;
+                    }
+                }
+                .compoinent-info-container {
+                    .title {
+                        display: flex;
+                        margin-bottom: 8px;
+                        .title-detail {
+                            font-weight: bold;
+                            font-size: 24px;;
+                        }
+                    }
+                    .static-info {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 8px;
+                        font-size: 18px;;
+                    }
+                    .profile {
+                        display: flex;
+                        margin-bottom: 8px;
+                        font-size: 16px;
+                    }
+                    .option {
+                        cursor: pointer;
+                        width: 80px;
+                        height: 24px;
+                        line-height: 24px;
+                        background-color:#0064c8;
+                        color: white;
+                        text-align: center;
+                        &:hover {
+                            opacity: .9;
+                        }
+                    }
+                }
+        
+            }
+            .component-tab {
+                .next-tabs-bar {
+                    padding-left: 16px;
+                    margin-bottom: 8px;
+                }
+            }
+        }
+        .component-use {
+            display: flex;
+            height: 100%;
+            .terminal-container {
+               flex: 0 0 65%;
+            }
+            .option-container {
+                flex: 0 0 35%;
+            }
+        }
+
+    }
+}
+
+
+.component-item-card {
+    display: flex;
+    cursor: pointer;
+    height: 76px;
+    box-sizing: content-box;
+    &.active {
+        border: 1px solid #0064c8;
+        background-color: rgba(0,100,200,.8);
+        color: white;
+    }
+    &:hover {
+        opacity: .9;
+
+    }
+    .avartor-container {
+        width: 76px;
+        .avartor {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 8px auto;
+            background-color:#595959;
+        }
+        
+    }
+    .detail {
+        flex: 1 1 auto;
+        padding-top: 8px;
+        position: relative;
+        .top-content {
+            height: 24px;
+            display: flex;
+            align-items: flex-end;
+            .tite {
+                font-weight: bold;
+                margin-right: 4px;
+                font-size: 20px;
+            }
+            .version {
+                margin-right: 20px;
+            }
+            .downloadnumber {
+                position: absolute;
+                right: 4px;
+                margin-right: 4px;
+            }
+        }
+        .inner-content {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            
+        }
+    }
+}
+
+.welcome-container {
+    position: absolute;
+    width: 600px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -200px;
+    .welcome-title {
+        font-weight: bold;
+        font-size: 32px;
+        width: 100%;
+        text-align: center;
+    }
+    .welcome-info {
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+    }
+}

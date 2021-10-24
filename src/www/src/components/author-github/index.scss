@@ -1,0 +1,46 @@
+.git-author {
+    position: relative;
+    cursor: pointer;
+    &:hover {
+        opacity: .8;
+    }
+    .menu-item-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: white;
+    }
+    .git-login {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        &:hover {
+            opacity: 0.7;
+        }
+        .login-word {
+            color: #fff;
+        }
+
+    }
+    .login-tips {
+        padding: 20px;
+        width: 360px;
+        height: 260px;
+        .login-tip {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 12px;
+        }
+        .logout {
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            .logout-btn {
+                width: 100%;
+                background-color: white !important;
+              
+            }
+        }
+    }
+   
+}

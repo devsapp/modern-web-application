@@ -1,0 +1,37 @@
+.access-info-container {
+    padding: 20px;
+    .access-item {
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+        .access-remove {
+            position: absolute;
+            right: 20px;
+            &::before {
+                font-size: 14px;
+                color: red;
+                cursor: pointer;
+               
+            }
+            &:hover {
+                &::before {
+                    opacity: .8;
+                }
+            }
+        }
+        .access-title {
+            font-size: 16px;
+            margin-bottom: 4px;
+            .access-aliasname {
+                font-weight: bold;
+            }
+        }
+        .access-info-tip {
+            font-size: 16px;
+        }
+        .access-info-item {
+            padding-left: 20px
+        }
+    }
+}

@@ -1,0 +1,17 @@
+
+.init-loading-container {
+    display: flex;
+    align-items: center;
+    .init-loading {
+        background-image: url('../../assets/s.gif');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 50px;
+        margin-right: 12px;
+    }
+    .loading-word {
+        font-size: 14px;
+    }
+
+}

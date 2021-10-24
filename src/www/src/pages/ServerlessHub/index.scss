@@ -1,0 +1,63 @@
+$container-padding: 18px;
+.prism-code {
+    white-space: normal;
+    .token-line {
+        white-space: normal;
+        word-break: break-all;
+        .token {
+            white-space: normal;
+            word-break: break-all;
+        }
+    }
+}
+.serverless-hub-layout {
+    width: 100%;
+}
+.serverless-hub-container {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    overflow-y: auto;
+    .center-content-container {
+        height: 100%;
+        width: 100%;
+        .result-container {
+            height: fit-content;
+        }
+        .app-list-container {
+            height: 100%;
+            width: 100%;
+        }
+        .app-list-container >div {
+            height: 100%;
+            width: 100%;
+            .next-loading {
+                min-height: 200px;
+                width: 100%;
+            }
+        }
+    }
+    .top-search-container {
+        display: flex;
+        height: 52px;
+        align-items: center;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        justify-content: space-between;
+        padding: 0 $container-padding;
+        margin-bottom: 21px;
+        .top-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #373D41;
+            white-space: nowrap;
+        }
+       
+    }
+    .top-desc {
+        padding: 0 $container-padding;
+        margin-bottom: 19px;;
+    }
+         
+}
+
+

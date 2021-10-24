@@ -1,0 +1,125 @@
+edition: 1.0.0 #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
+name: modern-web-application #  项目名称
+access: #访问秘钥别名
+vars: # [全局变量，提供给各个服务使用]
+  domain: 
+  region: cn-hongkong
+  indexFile: index.html
+  fc: 
+    baseUrl:  #函数计算触发器地址，可以在部署好函数之后获得。例子： https://xxx.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/serverlesshub/serverlesshub/
+  oss:
+    baseUrl: #oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
+    bucketName: hanxie-serverless-hub
+services:
+  www: # 静态资源
+    component: devsapp/website
+    actions:
+      pre-deploy:
+        - run: npm install
+          path: ./
+        - run: npm run build
+          path: ./
+    props:
+      bucket: ${vars.oss.bucketName}
+      src:
+        # codeUri: ./
+        publishDir: ./www/build
+        index: index.html
+        subDir:
+          type: index
+      region: ${vars.region}
+  apis: #动态api
+    component: devsapp/fc # 组件名称
+    actions:
+      pre-deploy:
+        - run: npm install
+          path: ./apis
+    props:
+      region: ${vars.region}
+      service:
+        name: serverlesshub
+        description: serverless应用市场
+        internetAccess: true
+      function:
+        name: serverlesshub
+        description: serverless应用市场的函数
+        runtime: nodejs12
+        codeUri: ./apis
+        handler: index.handler
+        memorySize: 128
+        timeout: 10
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
+              - POST
+      customDomains:
+        - domainName: auto
+          protocol: HTTP
+          routeConfigs:
+            - path: /*
+  gateway: #  服务名称
+    component: apigateway # 这里引入的是相对路径，正式配置替换成你自己的component名称即可
+    props:
+      regionId: ${vars.region}
+      customerDomain: ${vars.domain} # 客户自定义域名
+      groupName: release_hub #指定分组 这里你可以分开设置环境
+      stageName: RELEASE  
+      apis:
+        - apiName: portal_get_api # 访问网站的getapi
+          regionId: ${vars.region}
+          requestConfig:
+            requestPath: /api/*
+            requestHttpMethod: GET
+          serviceConfig:
+            servicePath: / # 后端路径
+            serviceProtocol: FunctionCompute
+            functionComputeConfig: # 函数计算的配置
+              fcRegionId: ${vars.region} # 函数计算region
+              fcBaseUrl: ${vars.fc.baseUrl}
+              onlyBusinessPath: true # 只接受路径
+              contentTypeCatagory: CLIENT
+              path: /
+            resultType: JSON
+        - apiName: portal_post_api # 访问网站post类型的api
+          regionId: ${vars.region}
+          requestConfig:
+            requestPath: /api/*
+            requestHttpMethod: POST
+          serviceConfig:
+            servicePath: / # 后端路径
+            serviceProtocol: FunctionCompute
+            functionComputeConfig: # 函数计算的配置
+              fcRegionId: ${vars.region} # 函数计算region
+              fcBaseUrl: ${vars.fc.baseUrl}
+              onlyBusinessPath: true # 只接受路径
+              path: /
+              contentTypeCatagory: CLIENT
+            resultType: JSON
+        - apiName: portal_assets # 访问站点的静态资源
+          regionId: ${vars.region}
+          requestConfig:
+            requestPath: /*
+            requestHttpMethod: GET
+          serviceConfig:
+            serviceAddress: ${vars.oss.baseUrl}
+            aoneAppName: cloudapi-openapi
+            servicePath: /* # 后端路径
+            serviceHttpMethod: ANY
+            serviceProtocol: HTTP
+            resultType: JSON
+        - apiName: protal_index # 设置访问站点的主页路径
+          regionId: ${vars.region}
+          requestConfig:
+            requestPath: /
+            requestHttpMethod: GET
+          serviceConfig:
+            serviceAddress: ${vars.oss.baseUrl}
+            aoneAppName: cloudapi-openapi
+            servicePath: /index.html # 后端路径
+            serviceHttpMethod: GET
+            serviceProtocol: HTTP
+            resultType: JSON

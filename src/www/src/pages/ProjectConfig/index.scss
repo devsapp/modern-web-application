@@ -1,0 +1,223 @@
+.project-config-container {
+   
+    .remove-icon {
+        &::before {
+            color: red;
+            font-size: 12px !important;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+    }
+    .action-command {
+        position: relative;
+        .delete {
+            position: absolute;
+            top: 30px;
+            left: -20px;
+            font-size: 12px;
+        }
+        .command-detail {
+            position: relative;
+            width: 100%; 
+            &::after {
+                content: "";
+                position: absolute;
+                border-bottom: 1px solid #0064c8;
+                border-left: 1px solid #0064c8;
+                background-color: transparent;
+                padding: 8px 8px;
+                margin: 37px auto;
+                transform: rotate(-315deg);
+                transform-origin: 50% 50%;
+                left: 12%;
+                top: 2px;
+            }
+      
+        }
+
+    }
+    .project-config-topcontainer {
+        .project-config-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #262626;
+            margin-bottom: 6px;
+            display: flex;
+            height: 32px;
+            align-items: center;
+            .title-breadcrumb {
+                .next-breadcrumb-text {
+                    font-size: 20px;
+                }
+            }
+            .workspace-content {
+                cursor: pointer;
+                margin-left: 8px;
+                margin-right: 8px;
+                text-decoration: underline;
+            }
+            .open-workspace-icon {
+                width: 24px;
+                cursor: pointer;
+                &:hover {
+                    opacity: .7;
+                }
+            }
+        }
+    }
+    .project-config-content {
+        display: flex;
+        flex-direction: row;
+        .nav-tips {
+            position: fixed;
+            width: 100px;
+            left: 61px;
+            margin-top: 5px;
+            .next-child-selected,
+            .next-selected  {
+                background-image: none !important;
+            }
+        }
+        .config-title {
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            .config-text {
+                font-size: 14px;
+                font-weight: bold;
+                width: 120px;
+            
+            }
+            .config-option {
+                display: flex;
+                align-items: center;
+            }
+            .title-content {
+                margin-left: 4px;
+                color: #0064c8;
+                font-size: 30px;    
+                word-break: break-all;        
+            }
+            .methods {
+                font-size: 12px;
+                margin-right: 10px;
+                margin-left: 10px;
+        
+            }
+            .action-btn {
+                height: 36px;
+            }
+        }
+        .service-item-container {
+            padding-left: 4px;
+            width: 100%;
+            overflow-x: auto;
+        }
+        .service-config-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: -10px;
+            &::before {
+                width: 4px;
+                height: 10px;
+                background-color: blue;
+            }
+        }
+        .left-content {
+            width: 60%;
+            position: relative;
+            .next-tabs-bar {
+              padding-left: 10px;
+            }
+            .next-tabs-tab-inner {
+              font-size: 16px;
+            }
+            .config-container {
+                margin-left: 100px;
+                margin-top: 10px;
+            }
+        }
+        .dragbar {
+            &:hover {
+                background-color: #0064c8;
+            }
+        }
+        .right-content {
+            .save-options-tips {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right:0;
+                text-align: center;
+                color: white;
+                z-index: 3;
+            }
+            position: relative;
+            width: 40%;
+            background-color: #1e1e1e;
+            padding-top: 20px;
+            padding-right: 3px;
+        }
+    }
+    .info-tips {
+        font-size: 12px;
+        color: red;
+        margin-left: 4px;
+        .next-icon {
+            &::before {
+                font-size: 12px;
+            }
+        }
+    }
+    .config-footer {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        margin-left: 60px;
+        padding-left: 24px;
+        bottom : 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        border-top: 1px solid #eee;
+        background-color: #fff;
+        .deploy-all {
+            margin-left: 40px;
+            margin-right: 12px;
+        }
+        .save-config {
+            margin-left: 16px;
+        }
+    }
+    .struct-form-container {
+        padding-left: 60px;
+        position: relative;
+        .option-btn {
+            position: absolute;
+            &.show-vars-view {
+              top: -30px;
+              left: 32px;
+            }
+            &.show-form-view {
+              right: 0px;
+            }
+        }
+        .struct-item-text {
+            margin-top: -52px;
+            .text-input {
+                margin-right: 8px;
+            }
+            .next-icon {
+                cursor: pointer;
+                &:hover {
+                    opacity: .8;
+                }
+            }
+        }
+        .struct-item-obj {
+            margin-top: -24px;
+            min-width: 420px;
+        }
+    }
+}

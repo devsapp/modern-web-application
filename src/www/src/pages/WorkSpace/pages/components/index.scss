@@ -1,0 +1,79 @@
+$primaryColor: #0064c8;
+.app-next-card {
+    width: 400px;
+    height: 162px;
+    float: left;
+    border: 1px solid #e3e4e6;
+    padding: 15px 10px;
+    margin: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    .template-title {
+      font-size: 14px;;
+    }
+    .header-options {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      right: 10px;
+      .next-icon-delete {
+        &::before {
+          color: red;
+        }
+      }
+    }
+    .remove-btn {
+      position: absolute;
+      right: 10px;
+    }
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+    .next-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      .header-text {
+        color: #262626;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    .next-content {
+      margin-bottom: 10px;
+      .content-item {
+        margin-bottom: 4px;
+      }
+      .content-text {
+        display: flex;
+        align-items: center;
+        .title {
+          width: 68px;
+          align-self: flex-start;
+        }
+      }
+    }
+    .next-footer {
+      // background-color: bisque;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .next-btn.next-medium {
+        padding: 0 5px !important;
+      }
+      .status {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 8px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+}
+  
+

@@ -1,0 +1,86 @@
+$primaryColor: #0064c8;
+$whiteColor: white;
+$blackColor: black;
+.box-container {
+    &.close {
+      .config-title-container {
+        &::before {
+          transform-origin: bottom center;
+          transform: translateX(.7em) rotate(-30deg) scale(.75);
+        }
+        &::after {
+          transform-origin: top center;
+          transform: translateX(.7em) rotate(30deg) scale(.75);
+        }
+      }
+      .config-box  {
+        visibility: hidden;
+        overflow: hidden;
+        height: 0;
+        width: 0;
+      }
+    }
+    .config-title-container {
+      cursor: pointer;
+      position: relative;
+      padding: .5em 1.5em;
+      line-height: 1.5;
+      background-color: transparent;
+      transition: border-color .12s;
+      outline: none;
+      font-size: 18px;
+      font-weight: bold;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 50%;
+        background-color: $primaryColor;
+        transition: transform .2s cubic-bezier(.4,.1,0,1);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 2px;
+        height: 50%;
+        background-color: $primaryColor;
+        transition: transform .2s cubic-bezier(.4,.1,0,1);
+      }
+      .config-title-desc {
+        font-size: 12px;
+        font-weight: normal;
+  
+      }
+  
+    }
+    .config-box {
+      padding: 20px 20px 20px 32px;
+      border-radius: 5px;
+      background-color: hsl(0,0%,96%);;
+      border: 1px solid hsl(0,0%,88%);
+      position: relative;
+      margin-top: 10px;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      >span > .form-pannel {
+        width: auto !important;
+        overflow-x: auto;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: -11px;
+        width: 20px;
+        height: 20px;
+        background-color: inherit;
+        border-top: inherit;
+        border-right: inherit;
+        border-top-right-radius: 3px;
+        transform: rotate(-45deg);
+      }
+    }
+  }

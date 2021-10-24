@@ -1,0 +1,207 @@
+$container-padding: 18px;
+$container-margin-bottom: 21px;
+.layout-topbar {
+  width: 100%;
+  position: relative;
+  height: 40px;
+  background-color: #0064c8; 
+  background-image: var(--btn-pure-primary-bg-image);
+  -webkit-app-region: drag;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  .windows-option-view {
+    -webkit-app-region: no-drag;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    right: 5px;
+    .option-icon {
+      width: 18px;
+      height: 18px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      margin-right: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      &:hover {
+        opacity: .8;
+      }
+    }
+    .min {
+      width: 16px;
+      height: 16px;
+      background-image: url('../assets/min.png');
+     
+    }
+    .max {
+      background-image: url('../assets/max.png');
+    }
+    .close {
+      width: 12px;
+      height: 12px;
+      background-image: url('../assets/close.png');
+    }
+  }
+  .s-logo {
+    width: 50px;
+    -webkit-app-region: no-drag;
+  }
+  .word {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    -webkit-app-region: no-drag;
+  }
+
+ }
+ .layout-shell {
+   display: flex;
+   width: 1220px;
+   margin: 0 auto;
+ }
+ .layout {
+  .layout-navigation {
+    padding-top: 12px;
+    background-color: rgba(245, 245, 245,.8);
+    min-width:60px;
+    min-height: 100vh;
+  }
+ }
+ .main {
+  .layout-navigation {
+   
+    width: 200px;
+   
+   
+  }
+ }
+ 
+ 
+ .layout-content {
+   flex: 1;
+   min-height: 100vh;
+   .page-title-container {
+    display: flex;
+    height: 52px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    justify-content: space-between;
+    padding: 0 $container-padding;
+    margin-bottom: $container-margin-bottom;
+    .title-name {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #262626;
+      .choose-type {
+        margin-left: 8px;
+      }
+      .next-breadcrumb {
+        display: flex;
+        height: 32px;
+        .next-breadcrumb-item {
+          display: flex;
+          height: 32px;
+          align-items: center;
+        }
+      }
+      .next-breadcrumb-text {
+          font-size: 24px;
+          height: 100%;
+          line-height: 32px;
+          
+      }
+      
+    }
+    
+    .title-desc {
+
+    }
+    
+  }
+  .center-content-container {
+    padding: 0 $container-padding;
+    display: flex;
+    overflow-y: auto;
+    .search-category-container {
+        position:fixed;
+        right: 0;
+        bottom: 0;
+        top: 140px;
+        width: 180px;
+        flex: 0 0 auto;
+        background-color: white;
+       
+    }
+    .result-container {
+        .card-cmp {
+            float: left;
+            margin-right: 15px;
+        }
+    }
+    .app-list-container {
+        .card-cmp {
+            float: left;
+            margin-right: 15px;
+        }
+    }
+  } 
+ }
+
+ .sub {
+  .layout-navigation {
+    width: 60px;
+  }
+  .serverless-nav {
+    width: 100%;
+    .menu-item {
+      width: 100%;
+      .menu-item-normal {
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+        .menu-item-icon {
+          margin: 0 auto;
+        }
+      }
+      .menu-item-active {
+        width: 50px;
+        margin: 0 auto;
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+        .menu-item-icon {
+          margin: 0 auto;
+        }
+      }
+      .menu-item-text {
+        display: none;
+      }
+      .menu-item-text-active {
+        display: none;
+      }
+    }
+  } 
+ }
+ .serverless-nav {
+   .login-nav {
+     position: absolute;
+     left: 0;
+     right: 0;
+     text-align: center;
+     bottom: 140px;
+   }
+   .config-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 60px;
+    margin-left: -5px;
+  }
+ }

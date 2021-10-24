@@ -1,0 +1,20 @@
+{
+  "name": "index",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "serve": "sandbox"
+  },
+  "dependencies": {
+    "@serverless-devs/dk": "latest",
+    "lodash.get": "^4.4.2",
+    "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "@serverless-devs/sandbox": "latest"
+  }
+}

@@ -1,0 +1,54 @@
+.app-header {
+    padding: 0 10px;
+    .header-search {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      .app-text {
+        font-size: 20px;
+        font-weight: 600;
+        color: #262626;
+      }
+    }
+    .header-filter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .filter {
+        display: flex;
+      }
+    }
+    .status {
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+  
+  .app-card-content {
+
+  }
+  
+  .user-view {
+  
+  }
+  .developer-view {
+    .type-list {
+      margin-left: 12px;
+    }
+    .app-title-container {
+      position: relative;
+      width: 100%;
+      .developer-create-btn {
+        position: absolute;
+        right: 10px;
+        top: 0;
+      }
+    }
+    
+  }
+  

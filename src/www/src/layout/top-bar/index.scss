@@ -1,0 +1,14 @@
+.nav-container {
+    background-color: transparent !important;
+    height: 40px !important;
+    margin-left: 12px !important;
+    box-shadow: none !important;
+    .next-menu-item {
+        background-color: transparent !important;
+        height: 100%;
+        .next-menu-item-inner {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+    }
+}

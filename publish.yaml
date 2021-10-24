@@ -1,0 +1,10 @@
+Type: Application
+Name: modern-web-application
+Version: 0.0.1
+Category: 云应用
+HomePage: 项目首页地址
+Tags:
+  - 云应用
+  - 全栈应用
+  - jamstack
+Description: '使用serverless devs 部署构建的现代化企业级web应用，涉及阿里云 apigateway，阿里云oss,阿里云函数计算，阿里云dns解析等产品'

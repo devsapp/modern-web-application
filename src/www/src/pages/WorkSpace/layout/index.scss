@@ -1,0 +1,23 @@
+.workspace-layout-topbar {
+    height: 40px;
+    background-color: #0064c8; 
+    background-image: var(--btn-pure-primary-bg-image);
+    -webkit-app-region: drag;
+}
+.workspace-layout-shell {
+    display: flex;
+}
+
+
+.workspace-layout-navigation {
+    width: 160px;
+    min-height: 100vh;
+}
+   
+.workspace-layout-content {
+    flex: 1;
+    min-height: 100vh;
+    padding: 10px;
+  
+    // background-color: #e1e6e6;
+}

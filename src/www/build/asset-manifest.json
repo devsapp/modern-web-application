@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "./static/css/main.4fa95c92.chunk.css",
+    "main.js": "./static/js/main.e616e4a4.chunk.js",
+    "runtime-main.js": "./static/js/runtime-main.529faf1c.js",
+    "static/css/2.ada02ea4.chunk.css": "./static/css/2.ada02ea4.chunk.css",
+    "static/js/2.e65053f3.chunk.js": "./static/js/2.e65053f3.chunk.js",
+    "editor.worker.js": "./editor.worker.js",
+    "index.html": "./index.html",
+    "json.worker.js": "./json.worker.js",
+    "precache-manifest.99959f04071781b269cb6ec109d86af6.js": "./precache-manifest.99959f04071781b269cb6ec109d86af6.js",
+    "service-worker.js": "./service-worker.js",
+    "static/js/2.e65053f3.chunk.js.LICENSE.txt": "./static/js/2.e65053f3.chunk.js.LICENSE.txt",
+    "static/media/cardTitle.png": "./static/media/cardTitle.5f7139a2.png",
+    "static/media/index.css": "./static/media/iconfont_90bd1fe8.90bd1fe8.woff",
+    "static/media/App.scss": "./static/media/s-loading.b0310c8c.gif",
+    "static/media/s.png": "./static/media/s.d1d7ecb9.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.529faf1c.js",
+    "static/css/2.ada02ea4.chunk.css",
+    "static/js/2.e65053f3.chunk.js",
+    "static/css/main.4fa95c92.chunk.css",
+    "static/js/main.e616e4a4.chunk.js"
+  ]
+}

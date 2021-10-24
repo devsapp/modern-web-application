@@ -1,0 +1,161 @@
+.userapp-container {
+    overflow: hidden;
+    .tab-container {
+       margin-top: 12px;
+       .next-tabs-tab {
+           width: 120px;
+           .tab-inner {
+               display: flex;
+               align-items: center;
+               justify-content: space-around;
+               img {
+                   width: 20px;
+                   margin-right: 4px;
+               }
+           }
+       }
+    }
+    .basicinfo-container {
+        .info-item {
+            display: flex;
+            align-items: center;
+        }   
+        .resource-name-container {
+            display: flex;
+            align-items: center;
+            .resource-icon {
+                width: 20px;
+                height: 20px;
+                margin-right: 12px;
+            }
+        }
+        .domain-container {
+            .next-icon-help {
+                &::before {
+                    font-size: 12px;
+                }
+            }
+        }
+        .command-item {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-bottom: 4px;
+            .word {
+                flex: 0 0 80px;
+            }
+            .next-btn {
+                font-size: 12px;
+            }
+            .prism-code {
+                width: 100%;
+                padding: 5px;
+            }
+           
+        }
+   
+        .next-timeline-item-body {
+            width: 640px !important;
+        }
+    }
+    .st-container {
+        display: flex;
+        .test-config-title {
+            position: relative;
+            margin-top: 12px;
+            padding-bottom: 4px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            padding-bottom: 4px;
+            .word {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+        .st-left {
+            width: 40%;
+            .test-btn {
+                position: absolute;
+                z-index: 2;
+                right: 20px;
+            }
+            .test-config {
+                margin-top: 0px;
+            }
+        }
+        .st-right {
+            width: 60%;
+        }
+    }
+    .monitor-container {
+       .access-add-btn {
+         vertical-align: middle;
+         color:#0064c8;
+         cursor: pointer;
+         &:hover {
+             text-decoration: underline;
+         }
+
+       }
+    }
+    .debug-container {
+        padding-top: 24px;
+        .debug-step-container {
+            position: relative;
+            width: 1260px;
+            margin: 0 auto;
+        }
+        .workspace-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            height: 40px;
+            line-height: 40px;
+        }
+        .debug-view-step {
+            position: absolute;
+            left: 0;
+            right: 0;
+            .prepare-tips {
+                margin-top: 12px;
+                .title {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                .content {
+                    font-size: 14px;
+                    text-decoration: underline;
+                    margin-bottom: 4px;
+                }
+            }
+            .debug-showview-container {
+                height: 400px;
+                margin-top: 60px;
+                .clean-tips {
+                    cursor: pointer;
+                    width: 220px;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    border-radius: 3px;
+                    font-size: 14px;
+                    background-color: rgb(217, 48, 38);
+                    color: rgb(255, 255, 255);
+                }
+                img {
+                    width: 100%;
+                }
+                
+            }
+        }
+    }
+
+    .marginBottom20{
+        margin-bottom: 20px;
+    }
+    
+}
