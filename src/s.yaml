@@ -16,9 +16,9 @@ services:
     actions:
       pre-deploy:
         - run: npm install
-          path: ./
+          path: ./www
         - run: npm run build
-          path: ./
+          path: ./www
     props:
       bucket: ${vars.oss.bucketName}
       src:
