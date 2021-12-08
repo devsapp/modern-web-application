@@ -5,12 +5,14 @@ vars: # [全局变量，提供给各个服务使用]
   domain: {{ domain|请输入域名信息 }}
   region: cn-hongkong
   indexFile: index.html
+  gateway:
+    groupName: serverlessdevs # apigateway 的分组名
   fc: 
     baseUrl:  '' #函数计算触发器地址，可以在部署好函数之后获得。例子： https://xxx.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/serverlesshub/serverlesshub/
   oss:
     bucketName: {{bucketName|请输入oss bucket名称，确保唯一}} 
     bucketObject: web 
-    baseUrl: https://${vars.oss.bucketName}.oss-cn-hongkong.aliyuncs.com  #oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
+    baseUrl: https://${vars.oss.bucketName}.oss-cn-hongkong.aliyuncs.com  # oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
 services:
   www: # 静态资源
     component: devsapp/OSS
@@ -64,7 +66,7 @@ services:
     props:
       regionId: ${vars.region}
       customerDomain: ${vars.domain} # 客户自定义域名
-      groupName: release_hub #指定分组 这里你可以分开设置环境
+      groupName: ${vars.gateway.groupName} #指定分组 这里你可以分开设置环境
       stageName: RELEASE  
       apis:
         - apiName: portal_get_api # 访问网站的getapi
@@ -105,7 +107,7 @@ services:
           serviceConfig:
             serviceAddress: ${vars.oss.baseUrl}
             aoneAppName: cloudapi-openapi
-            servicePath: /* # 后端路径
+            servicePath: /${vars.oss.bucketObject}/* # 后端路径
             serviceHttpMethod: ANY
             serviceProtocol: HTTP
             resultType: JSON
