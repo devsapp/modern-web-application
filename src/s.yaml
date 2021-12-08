@@ -1,33 +1,31 @@
 edition: 1.0.0 #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
 name: modern-web-application #  项目名称
-access: "{{ access }}"  #访问秘钥别名
+access: {{ access|请输入秘钥别名 }}  #访问秘钥别名
 vars: # [全局变量，提供给各个服务使用]
-  domain: ''
+  domain: {{ domain|请输入域名信息 }}
   region: cn-hongkong
   indexFile: index.html
   fc: 
     baseUrl:  '' #函数计算触发器地址，可以在部署好函数之后获得。例子： https://xxx.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/serverlesshub/serverlesshub/
   oss:
-    baseUrl: '' #oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
-    bucketName: '' # 例子： hanxie-serverless-hub
+    bucketName: {{bucketName|请输入oss bucket名称，确保唯一}} 
+    bucketObject: web 
+    baseUrl: https://${vars.oss.bucketName}.oss-cn-hongkong.aliyuncs.com  #oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
 services:
   www: # 静态资源
-    component: devsapp/website
-    actions:
-      pre-deploy:
-        - run: npm install
-          path: ./www
-        - run: npm run build
-          path: ./www
+    component: devsapp/OSS
+    # actions:
+    #   pre-deploy:
+    #     - run: npm install
+    #       path: ./www
+    #     - run: npm run build
+    #       path: ./www
     props:
       bucket: ${vars.oss.bucketName}
-      src:
-        # codeUri: ./
-        publishDir: ./www/build
-        index: index.html
-        subDir:
-          type: index
+      ossObject: ${vars.oss.bucketObject}
+      codeUri: ./www/build
       region: ${vars.region}
+      acl: public-read
   apis: #动态api
     component: devsapp/fc # 组件名称
     actions:
@@ -79,7 +77,7 @@ services:
             serviceProtocol: FunctionCompute
             functionComputeConfig: # 函数计算的配置
               fcRegionId: ${vars.region} # 函数计算region
-              fcBaseUrl: ${vars.fc.baseUrl}
+              fcBaseUrl: ${apis.output.url.system_url}
               onlyBusinessPath: true # 只接受路径
               contentTypeCatagory: CLIENT
               path: /
@@ -94,7 +92,7 @@ services:
             serviceProtocol: FunctionCompute
             functionComputeConfig: # 函数计算的配置
               fcRegionId: ${vars.region} # 函数计算region
-              fcBaseUrl: ${vars.fc.baseUrl}
+              fcBaseUrl: ${apis.output.url.system_url}
               onlyBusinessPath: true # 只接受路径
               path: /
               contentTypeCatagory: CLIENT
@@ -119,7 +117,16 @@ services:
           serviceConfig:
             serviceAddress: ${vars.oss.baseUrl}
             aoneAppName: cloudapi-openapi
-            servicePath: /index.html # 后端路径
+            servicePath: /${vars.oss.bucketObject}/index.html # 后端路径
             serviceHttpMethod: GET
             serviceProtocol: HTTP
             resultType: JSON
+  dns:  
+    component: dns # 这里引入的是相对路径，正式配置替换成你自己的component名称即可
+    actions:
+      post-deploy:
+        - run: s gateway bindDomain  #dns 挂载好 gateway的域名后，需要gateway再绑定一下
+          path: ./
+    props:
+      domainName: ${vars.domain}
+      value: ${gateway.output.domain} 
