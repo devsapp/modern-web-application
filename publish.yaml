@@ -8,3 +8,26 @@ Tags:
   - 全栈应用
   - jamstack
 Description: '使用serverless devs 部署构建的现代化企业级web应用，涉及阿里云 apigateway，阿里云oss,阿里云函数计算，阿里云dns解析等产品'
+Parameters:
+  type: object
+  additionalProperties: false # 不允许增加其他属性
+  required: # 必填项
+    - access
+    - domain
+    - bucketName
+  properties:
+    access:
+      title: 访问秘钥别名
+      type: string
+      default: default
+      description: 请输入秘钥别名
+    domain:
+      title: 域名
+      type: string
+      default: ''
+      description: '请输入自定义域名'
+    bucketName:
+      title: bucketName
+      type: string
+      default: ''
+      description:  '阿里云oss 存储桶名称，请确保唯一'
