@@ -1,8 +1,8 @@
 edition: 1.0.0 #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
 name: modern-web-application #  项目名称
-access: '{{ access|请输入秘钥别名 }}'  #访问秘钥别名
+access: '{{access}}'  #访问秘钥别名
 vars: # [全局变量，提供给各个服务使用]
-  domain: '{{ domain|请输入域名信息 }}'
+  domain: '{{domain}}'
   region: cn-hongkong
   indexFile: index.html
   gateway:
@@ -10,7 +10,7 @@ vars: # [全局变量，提供给各个服务使用]
   fc: 
     baseUrl:  '' #函数计算触发器地址，可以在部署好函数之后获得。例子： https://xxx.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/serverlesshub/serverlesshub/
   oss:
-    bucketName: '{{bucketName|请输入oss bucket名称，确保唯一}}' 
+    bucketName: '{{bucketName}}' 
     bucketObject: web 
     baseUrl: https://${vars.oss.bucketName}.oss-cn-hongkong.aliyuncs.com  # oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
 services:
