@@ -11,11 +11,10 @@ vars: # [全局变量，提供给各个服务使用]
     baseUrl:  '' #函数计算触发器地址，可以在部署好函数之后获得。例子： https://xxx.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/serverlesshub/serverlesshub/
   oss:
     bucketName: '{{bucketName}}' 
-    bucketObject: web 
-    baseUrl: https://${vars.oss.bucketName}.oss-cn-hongkong.aliyuncs.com  # oss 公网访问地址 。例子： https://<bucketname>.oss-cn-hongkong.aliyuncs.com
+    bucketObject: web  #指定子目录
 services:
   www: # 静态资源
-    component: devsapp/OSS
+    component: oss
     # actions:
     #   pre-deploy:
     #     - run: npm install
@@ -23,13 +22,20 @@ services:
     #     - run: npm run build
     #       path: ./www
     props:
-      bucket: ${vars.oss.bucketName}
-      ossObject: ${vars.oss.bucketObject}
-      codeUri: ./www/build
       region: ${vars.region}
-      acl: public-read
+      bucket: ${vars.oss.bucketName} # OSS bucket 自动生成
+      subDir: ${vars.oss.bucketObject}
+      acl: public-read # 读写权限
+      codeUri: ./www/build # 指定本地要上传目录文件地址
+      website: # OSS 静态网站配置
+        index: index.html # 默认首页
+        error: 404.html # 默认 404 页
+        subDirType: redirect # 子目录首页 404 规则
+      customDomains: # OSS 绑定域名
+        - domainName: auto
+          protocol: HTTP
   apis: #动态api
-    component: devsapp/fc # 组件名称
+    component: fc # 组件名称
     actions:
       pre-deploy:
         - run: npm install
@@ -67,28 +73,13 @@ services:
       regionId: ${vars.region}
       customerDomain: ${vars.domain} # 客户自定义域名
       groupName: ${vars.gateway.groupName} #指定分组 这里你可以分开设置环境
-      stageName: RELEASE  
+      stageName: RELEASE
       apis:
-        - apiName: portal_get_api # 访问网站的getapi
+        - apiName: portal_api # 访问网站post类型的api
           regionId: ${vars.region}
           requestConfig:
             requestPath: /api/*
-            requestHttpMethod: GET
-          serviceConfig:
-            servicePath: / # 后端路径
-            serviceProtocol: FunctionCompute
-            functionComputeConfig: # 函数计算的配置
-              fcRegionId: ${vars.region} # 函数计算region
-              fcBaseUrl: ${apis.output.url.system_url}
-              onlyBusinessPath: true # 只接受路径
-              contentTypeCatagory: CLIENT
-              path: /
-            resultType: JSON
-        - apiName: portal_post_api # 访问网站post类型的api
-          regionId: ${vars.region}
-          requestConfig:
-            requestPath: /api/*
-            requestHttpMethod: POST
+            requestHttpMethod: ANY
           serviceConfig:
             servicePath: / # 后端路径
             serviceProtocol: FunctionCompute
@@ -103,26 +94,11 @@ services:
           regionId: ${vars.region}
           requestConfig:
             requestPath: /*
-            requestHttpMethod: GET
+            requestProtocol: 'HTTP,HTTPS'
           serviceConfig:
-            serviceAddress: ${vars.oss.baseUrl}
-            aoneAppName: cloudapi-openapi
+            serviceProtocol: HTTP   # 协议类型
+            serviceAddress: 'http://${www.output.Domains[0]}' # 后端服务地址
             servicePath: /${vars.oss.bucketObject}/* # 后端路径
-            serviceHttpMethod: ANY
-            serviceProtocol: HTTP
-            resultType: JSON
-        - apiName: protal_index # 设置访问站点的主页路径
-          regionId: ${vars.region}
-          requestConfig:
-            requestPath: /
-            requestHttpMethod: GET
-          serviceConfig:
-            serviceAddress: ${vars.oss.baseUrl}
-            aoneAppName: cloudapi-openapi
-            servicePath: /${vars.oss.bucketObject}/index.html # 后端路径
-            serviceHttpMethod: GET
-            serviceProtocol: HTTP
-            resultType: JSON
   dns:  
     component: dns # 这里引入的是相对路径，正式配置替换成你自己的component名称即可
     actions:
