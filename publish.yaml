@@ -1,8 +1,30 @@
 Type: Application
 Name: modern-web-application
-Version: 0.0.10
+Version: 0.0.11
 Category: 云应用
 HomePage: 项目首页地址
+Service:
+  函数计算:
+    Authorities:
+      - AliyunFCFullAccess
+  硬盘挂载:
+    Authorities:
+      - AliyunNASFullAccess
+  VPC:
+    Authorities:
+      - AliyunVPCFullAccess
+  对象存储:
+    Authorities:
+      - AliyunOSSFullAccess
+  解析服务:
+    Authorities:
+      - AliyunDNSFullAccess
+  API网关:
+    Authorities: 
+      - AliyunApiGatewayFullAccess
+  其它:
+    Authorities:
+      - AliyunECSFullAccess
 Tags:
   - 云应用
   - 全栈应用
